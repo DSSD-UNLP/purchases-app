@@ -1,22 +1,19 @@
-/*
- *= require font-awesome
- *= require css/animate
- *= require css/owl.carousel
- *= require css/jquery-ui.min
- *= require css/magnific-popup
- *= require css/nice-select
- *= require css/font-awesome.min
- *= require css/style.css
- *= require css/classy-nav.min.css
- *= require css/core-style.css
-*/
+ /*
 
- @import "scss/_mixin.scss";
- @import "scss/_responsive.scss";
- @import "scss/style.scss";
- @import "scss/_theme_color.scss";
- @import "scss/_variables.scss";
+ //= require_self
 
- @import "bootstrap";
- @import "font-awesome-sprockets";
- @import "font-awesome";
+ */
+ @import "variables";
+ @import "theme_color";
+ @import "responsive";
+ @import "mixin";
+ @import "style";
+
+ @import "css/animate.css";
+ @import "css/bootstrap.min";
+ @import "css/classy-nav.min";
+ @import "css/core-style";
+ @import "css/font-awesome.min";
+ @import "css/jquery-ui.min";
+ @import "css/magnific-popup";
+ @import "css/nice-select";

@@ -2,7 +2,8 @@ class External::Product
   require 'net/http'
   include ActiveModel::Model
 
-  attr_accessor :name, :cost_price, :sale_price, :product_type, :id
+  attr_accessor :name, :cost_price, :sale_price,
+                :product_type, :id, :image, :stock
 
   def self.all
     request  = Net::HTTP::Get.new('/stock/products/')
