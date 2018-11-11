@@ -20,7 +20,7 @@
                     <div class="product-topbar d-xl-flex align-items-end justify-content-between">
                         <!-- Total Products -->
                         <div class="total-products">
-                            <p>Showing 1-8 0f 25</p>
+                            <p>Mostrando 1-<%= @products.count %> de <%= @manager.total_products %></p>
                         </div>
                         <!-- Sorting -->
                         <div class="product-sorting d-flex">
@@ -60,12 +60,19 @@
             <div class="row">
                 <div class="col-12">
                     <!-- Pagination -->
-                    <nav aria-label="navigation">
-                        <ul class="pagination justify-content-end mt-50">
-                            <li class="page-item active"><a class="page-link" href="#">01.</a></li>
-                            <li class="page-item"><a class="page-link" href="#">02.</a></li>
-                            <li class="page-item"><a class="page-link" href="#">03.</a></li>
-                            <li class="page-item"><a class="page-link" href="#">04.</a></li>
+                    <nav aria-label="navigation" class="text-center">
+                        <ul class="pagination">
+                            <li class="page-item">
+                                <a class="page-link" href="#">
+                                    <i class="fa fa-angle-double-left"></i>
+                                </a>
+                            </li>
+                            
+                            <li class="page-item">
+                                <a class="page-link" href="#">
+                                    <i class="fa fa-angle-double-right"></i>
+                                </a>
+                            </li>
                         </ul>
                     </nav>
                 </div>
