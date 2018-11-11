@@ -3,5 +3,7 @@ Rails.application.routes.draw do
 
   get :cart, controller: 'application'
 
+  root to: 'products#index'
+
   resources :products, only: :index
 end

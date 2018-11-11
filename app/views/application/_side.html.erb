@@ -6,16 +6,17 @@
     </div>
     <!-- Logo -->
     <div class="logo">
-        <a href="index.html"><img src="<%= image_url('core-img/logo.png') %>" alt=""></a>
+        <%= link_to root_path do %>
+            <%= image_tag 'core-img/logo.png' %>
+        <% end %>
     </div>
     <!-- Amado Nav -->
     <nav class="amado-nav">
         <ul>
-            <li><a href="index.html">Home</a></li>
-            <li class="active"><a href="shop.html">Shop</a></li>
-            <li><a href="product-details.html">Product</a></li>
-            <li><a href="cart.html">Cart</a></li>
-            <li><a href="checkout.html">Checkout</a></li>
+            <li style="display: inline" class="btn active"><%= link_to 'Inicio', root_path %></li>
+            <li style="display: inline" class="btn"><%= link_to 'Login', new_user_session_path %></li>
+            <li style="display: inline" class="btn"><a class="btn disabled" href="cart.html">Cart</a></li>
+            <li style="display: inline" class="btn"><a href="#">Checkout</a></li>
         </ul>
     </nav>
 </header>
