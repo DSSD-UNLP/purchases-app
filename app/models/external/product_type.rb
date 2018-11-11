@@ -4,7 +4,7 @@ class External::ProductType
 
   URL = '/stock/types/'.freeze
 
-  attr_accessor :name, :description
+  attr_accessor :id, :name, :description
 
   def self.all(pages:, page_url: nil)
     request =
