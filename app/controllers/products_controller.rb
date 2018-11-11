@@ -1,6 +1,8 @@
 class ProductsController < ApplicationController
   def index
-    @products = External::Product.all
+    manager   = External::ProductManager.new
+    @products = manager.products
+    @types    = manager.types
   end
 
   private

@@ -1,0 +1,19 @@
+<div class="shop_sidebar_area">
+    <!-- ##### Single Widget ##### -->
+    <div class="widget catagory mb-50">
+        <!-- Widget Title -->
+        <h6 class="widget-title mb-30">Categorías</h6>
+        <!--  Catagories  -->
+        <div class="catagories-menu">
+            <ul>
+                <% types.each do |type| %>
+                    <li>
+                        <a href="#">
+                            <%= type.name %>
+                        </a>
+                    </li>
+                <% end %>
+            </ul>
+        </div>
+    </div>
+</div>

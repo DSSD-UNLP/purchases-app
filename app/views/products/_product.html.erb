@@ -2,7 +2,7 @@
     <div class="single-product-wrapper">
         <!-- Product Image -->
         <div class="product-img">
-            <!-- <img src="<%#= product.image %>" alt=""> -->
+            <img src="<%= product.image %>" alt="">
             <!-- Hover Thumb -->
             <!-- <img class="hover-img" src="img/product-img/product2.jpg" alt=""> -->
         </div>
@@ -19,15 +19,8 @@
             </div>
             <!-- Ratings & Cart -->
             <div class="ratings-cart text-right">
-                <div class="ratings">
-                    <i class="fa fa-star" aria-hidden="true"></i>
-                    <i class="fa fa-star" aria-hidden="true"></i>
-                    <i class="fa fa-star" aria-hidden="true"></i>
-                    <i class="fa fa-star" aria-hidden="true"></i>
-                    <i class="fa fa-star" aria-hidden="true"></i>
-                </div>
                 <div class="cart">
-                    <a href="cart.html" data-toggle="tooltip" data-placement="left" title="Add to Cart"><i class="fa fa-cart"></i></a>
+                    <a href="cart.html" class="btn btn-success" data-toggle="tooltip" data-placement="left" title="Add to Cart">Comprar <i class="fa fa-shopping-cart"></i></a>
                 </div>
             </div>
         </div>
