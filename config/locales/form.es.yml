@@ -1,0 +1,15 @@
+es:
+  activemodel:
+    attributes:
+
+
+  activerecord:
+    attributes:
+      user: 
+        login: 'Usuario'
+        email: 'Email'
+        password: 'Contraseña'
+        current_password: 'Contraseña actual'
+        password_confirmation: 'Confirmar contraseña'
+      entity:
+        field: 'name_field'

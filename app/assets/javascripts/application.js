@@ -10,10 +10,17 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-//= require popper.min
 //= require jquery
+//= require popper.min
 //= require rails-ujs
 //= require activestorage
 //= require turbolinks
 //= require_tree ../../../vendor/assets/javascripts/
 //= require_tree .
+//= require snackbar
+
+$(document).on("turbolinks:load page:load", function(){
+  $.each(flashMessages, function(key, value){
+    $.snackbar({content: value, style: key, timeout: 10000});
+  });
+})

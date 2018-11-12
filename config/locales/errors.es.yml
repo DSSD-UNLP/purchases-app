@@ -1,0 +1,39 @@
+es:
+  errors:
+    messages:
+      less_than_or_equal_to: 'El número debe ser menor o igual que %{count}'
+      greater_than: 'El número debe ser mayor que %{count}'
+      taken: 'Ya fue tomado'
+      blank: 'No puede estar en blanco'
+      expired: "ha expirado, por favor pide una nueva"
+      not_found: "no encontrado"
+      already_confirmed: "ya fue confirmada. Intenta ingresar."
+      at_least_one_sub_products: 'Al menos debe seleccionar un subproducto'
+      at_least_one_ticket_discount_items: 'Al menos debe seleccionar un descuento personalizado'      
+      not_locked: "no ha sido bloqueada"
+      taken: "Ya ha sido tomado"
+      extension_white_list_error: 'Error en el tipo de archivo'
+      too_long: 'Demasiado largo'
+      too_short: 'Demasiado corto'
+      not_a_number: 'Debe ingresar un número'
+      not_saved:
+        one: "Ha habido 1 error:"
+        other: "Han habido %{count} errores:"
+      invalid_email: 'Formato de email invalido'
+
+  activerecord:
+    errors:
+      models:
+        user:
+          attributes:
+            current_password:
+              invalid: 'Contraseña actual invalida'
+            password:
+              confirmation: "No machea"
+              too_short: "Contraseña muy corta (el mínimo es %{count} caracteres)"
+            password_confirmation:
+              confirmation: 'Las contraseñas no coinciden'
+            email:
+              invalid: 'Formato de email invalido'
+
+

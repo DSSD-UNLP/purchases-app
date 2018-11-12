@@ -1,0 +1,55 @@
+<!-- Mobile Nav (max width 767px)-->
+<div class="mobile-nav">
+  <!-- Navbar Brand -->
+  <div class="amado-navbar-brand">
+      <a href="index.html"><img src="<%= image_url('core-img/logo.png') %>" alt=""></a>
+  </div>
+  <!-- Navbar Toggler -->
+  <div class="amado-navbar-toggler">
+      <span></span><span></span><span></span>
+  </div>
+</div>
+
+<div class="cart-table-area section-padding-100">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-6 mx-auto">
+        <div class="text-center">
+
+          <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+              
+            <h1 class="page-header"><i class="fa fa-sign-in fa-fw"></i> <%= t :login %></h1>
+
+            <div class="form-group">
+              <div class="input-group">
+                <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                <%= f.email_field :email, autofocus: true, class: 'form-control', placeholder: true %>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <div class="input-group">
+                <span class="input-group-addon"><i class="fa fa-lock"></i></span>
+                <%= f.password_field :password, autocomplete: "off" , class: 'form-control', placeholder: true %>  
+              </div>
+            </div>
+
+            <% if devise_mapping.rememberable? -%>
+              <label>
+                <%= f.check_box :remember_me %> <%= t(:remember_me) %>
+              </label>
+            <% end -%>
+
+            <%= button_tag(t(:login), type: 'submit', class: 'btn btn-primary btn-block btn-md', data: {'disable-with' => t(:logging)}) %>
+
+            <% if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
+              <br>
+              <%= link_to t(:forgot_password), new_password_path(resource_name) %>
+            <% end %>        
+
+          <% end %>   
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

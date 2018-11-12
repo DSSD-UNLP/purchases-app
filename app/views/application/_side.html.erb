@@ -1,23 +1,43 @@
 <!-- Header Area Start -->
 <header class="header-area clearfix">
-    <!-- Close Icon -->
-    <div class="nav-close">
-        <i class="fa fa-close" aria-hidden="true"></i>
-    </div>
-    <!-- Logo -->
-    <div class="logo">
-        <%= link_to root_path do %>
-            <%= image_tag 'core-img/logo.png' %>
-        <% end %>
-    </div>
-    <!-- Amado Nav -->
-    <nav class="amado-nav">
-        <ul>
-            <li style="display: inline" class="btn active"><%= link_to 'Inicio', root_path %></li>
-            <li style="display: inline" class="btn"><%= link_to 'Login', new_user_session_path %></li>
-            <li style="display: inline" class="btn"><a class="btn disabled" href="cart.html">Cart</a></li>
-            <li style="display: inline" class="btn"><a href="#">Checkout</a></li>
-        </ul>
-    </nav>
+  <!-- Close Icon -->
+  <div class="nav-close">
+    <i class="fa fa-close" aria-hidden="true"></i>
+  </div>
+  <!-- Logo -->
+  <div class="logo">
+    <%= link_to root_path do %>
+        <%= image_tag 'core-img/logo.png' %>
+    <% end %>
+  </div>
+  <!-- Amado Nav -->
+  <nav class="amado-nav">
+    <ul>
+      
+      <li style="display: inline;" class="btn<% if current_page?(products_path) || current_page?(root_path) %> active <% end %> ">
+        <%= link_to t(:home), root_path %>
+      </li>
+      
+      <% if current_user.blank? %>
+      
+        <li style="display: inline" class="btn<% if current_page?(new_user_session_path) %> active<% end %> ">
+          <%= link_to t(:login), new_user_session_path %>
+        </li>
+
+        <li style="display: inline" class="btn<% if current_page?(new_user_registration_path) %> active<% end %> ">
+          <%= link_to t(:sign_up), new_user_registration_path %>
+        </li>
+
+      <% else %>
+        <li style="display: inline" class="btn">
+          <%= link_to t(:logout), destroy_user_session_path, method: :delete %>
+        </li>      
+      <% end %>
+      
+      <li style="display: inline" class="btn"><a class="btn disabled" href="cart.html">Cart</a></li>
+      
+      <li style="display: inline" class="btn"><a href="#">Checkout</a></li>
+    </ul>
+  </nav>
 </header>
 <!-- Header Area End -->

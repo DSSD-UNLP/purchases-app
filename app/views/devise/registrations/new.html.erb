@@ -1,0 +1,58 @@
+<!-- Mobile Nav (max width 767px)-->
+<div class="mobile-nav">
+  <!-- Navbar Brand -->
+  <div class="amado-navbar-brand">
+      <a href="index.html"><img src="<%= image_url('core-img/logo.png') %>" alt=""></a>
+  </div>
+  <!-- Navbar Toggler -->
+  <div class="amado-navbar-toggler">
+      <span></span><span></span><span></span>
+  </div>
+</div>
+
+<div class="cart-table-area section-padding-100">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-6 mx-auto">
+        <div class="text-center">
+          
+          <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+
+
+            <div class="box box-primary">
+              <div class="box-body">
+                <h1 class="page-header">
+                  <i class="fa fa-user-plus fa-fw"></i>
+                  <%= t :sign_up %>
+                </h1>
+
+
+                <div class="form-group">
+                  <%= f.label :email, class: 'control-label' %>            
+                  <%= f.email_field :email, autofocus: true, class: 'form-control', placeholder: true %>
+                </div>
+
+                <div class="form-group">
+                  <%= f.label :password %>
+                  <%= f.password_field :password, autocomplete: 'off', class: 'form-control', placeholder: true %>
+                </div>
+
+                <div class="form-group">
+                  <%= f.label :password_confirmation %>
+                  <%= f.password_field :password_confirmation, autocomplete: 'off', class: 'form-control', placeholder: true %>
+                </div>
+
+
+                <%= button_tag(t(:submit), type: 'submit', class: 'btn btn-primary btn-block btn-lg', data: {'disable-with' => t(:submiting)}) %>
+              </div>
+
+            </div>
+
+
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

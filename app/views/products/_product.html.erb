@@ -1,31 +1,35 @@
 <div class="col-12 col-sm-6 col-md-12 col-xl-6">
-    <div class="single-product-wrapper">
-        <!-- Product Image -->
-        <div class="product-img">
-            <img src="<%= product.image %>" alt="">
-            <!-- Hover Thumb -->
-            <!-- <img class="hover-img" src="img/product-img/product2.jpg" alt=""> -->
-        </div>
-
-        <!-- Product Description -->
-        <div class="product-description d-flex align-items-center justify-content-between">
-            <!-- Product Meta Data -->
-            <div class="product-meta-data">
-                <div class="line"></div>
-                <p class="product-price"><%= product.sale_price %></p>
-                <a href="product-details.html">
-                    <h6><%= product.name %></h6>
-                </a>
-            </div>
-            <!-- Ratings & Cart -->
-            <div class="ratings-cart text-right">
-                <div class="product-meta-data">
-                    <p class="avaibility"><i class="fa fa-check-circle"></i> In Stock</p>
-                </div>
-                <div class="cart">
-                    <a href="cart.html" class="btn btn-success disabled" data-toggle="tooltip" data-placement="left" title="Add to Cart">Comprar <i class="fa fa-shopping-cart"></i></a>
-                </div>
-            </div>
-        </div>
+  <div class="single-product-wrapper">
+    <!-- Product Image -->
+    <div class="product-img">
+      <img src="<%= product.image %>" alt="">
+      <!-- Hover Thumb -->
+      <!-- <img class="hover-img" src="img/product-img/product2.jpg" alt=""> -->
     </div>
+
+    <!-- Product Description -->
+    <div class="product-description d-flex align-items-center justify-content-between">
+      <!-- Product Meta Data -->
+      <div class="product-meta-data">
+        <div class="line"></div>
+        <p class="product-price"><%= product.sale_price %></p>
+        <a href="product-details.html">
+            <h6><%= product.name %></h6>
+        </a>
+      </div>
+      <!-- Ratings & Cart -->
+      <div class="ratings-cart text-right">
+
+        <% if product.stock.to_i > 0 %>
+          <div class="product-meta-data">
+              <p class="avaibility"><i class="fa fa-check-circle"></i>In Stock</p>
+          </div>
+        <% end %>
+
+        <div class="cart">
+            <a href="cart.html" class="btn btn-success disabled" data-toggle="tooltip" data-placement="left" title="Add to Cart">Comprar <i class="fa fa-shopping-cart"></i></a>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

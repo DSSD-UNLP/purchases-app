@@ -1,17 +1,19 @@
 <div class="shop_sidebar_area">
-    <!-- ##### Single Widget ##### -->
-    <div class="widget catagory mb-50">
-        <!-- Widget Title -->
-        <h6 class="widget-title mb-30">Categorías</h6>
-        <!--  Catagories  -->
-        <div class="catagories-menu">
-            <ul>
-                <% types.each do |type| %>
-                    <li>
-                        <%= link_to type.name, products_path(filter: { type: type.id }) %>
-                    </li>
-                <% end %>
-            </ul>
-        </div>
+  <!-- ##### Single Widget ##### -->
+  <div class="widget catagory mb-50">
+    <!-- Widget Title -->
+    <h6 class="widget-title mb-30">Categorías</h6>
+    <!--  Catagories  -->
+    <div class="catagories-menu">
+      <ul>
+    
+        <% types.each do |type| %>
+          <li>
+            <%= link_to type.name, products_path(page: params[:page], per_page: params[:per_page], filter: { type: type.id }) %>
+          </li>
+        <% end %>
+
+      </ul>
     </div>
+  </div>
 </div>

@@ -1,83 +1,50 @@
-    <!-- Mobile Nav (max width 767px)-->
-    <div class="mobile-nav">
-        <!-- Navbar Brand -->
-        <div class="amado-navbar-brand">
-            <a href="index.html"><img src="<%= image_url('core-img/logo.png') %>" alt=""></a>
-        </div>
-        <!-- Navbar Toggler -->
-        <div class="amado-navbar-toggler">
-            <span></span><span></span><span></span>
-        </div>
+<!-- Mobile Nav (max width 767px)-->
+<div class="mobile-nav">
+  <!-- Navbar Brand -->
+  <div class="amado-navbar-brand">
+    <a href="index.html"><img src="<%= image_url('core-img/logo.png') %>" alt=""></a>
+  </div>
+  <!-- Navbar Toggler -->
+  <div class="amado-navbar-toggler">
+    <span></span><span></span><span></span>
+  </div>
+</div>
+
+<%= render 'types', types: @types %>
+
+<div class="amado_product_area section-padding-100">
+  <div class="container-fluid">
+
+    <%= render 'filter' %>
+
+    <div class="row">
+      <% @products.each do |product| %>
+        <%= render 'product', product: product %>
+      <% end %>
     </div>
 
-    <%= render 'types', types: @types %>
+    <div class="row">
+      <div class="col-12">
+      <!-- Pagination -->
+        <nav aria-label="navigation" class="text-center">
+          <ul class="pagination">
 
-    <div class="amado_product_area section-padding-100">
-        <div class="container-fluid">
+            <li class="page-item">
+              <%= link_to products_path(page: products_previous_page_number, per_page: params[:per_page], filter: params.dig(:filter)), class: "page-link btn #{disabled_previous}" do %>
+                <i class="fa fa-angle-double-left"></i>
+              <% end %>
+            </li>
+            
+            <li class="page-item">
+              <%= link_to products_path(page: products_next_page_number, per_page: params[:per_page], filter: params.dig(:filter)), class: "btn page-link #{disabled_next}" do %>
+                  <i class="fa fa-angle-double-right"></i>
+              <% end %>
+            </li>
 
-            <div class="row">
-                <div class="col-12">
-                    <div class="product-topbar d-xl-flex align-items-end justify-content-between">
-                        <!-- Total Products -->
-                        <div class="total-products">
-                            <p>Mostrando 1-<%= @products.count %> de <%= @manager.total_products %></p>
-                        </div>
-                        <!-- Sorting -->
-                        <div class="product-sorting d-flex">
-                            <div class="sort-by-date d-flex align-items-center mr-15">
-                                <p>Sort by</p>
-                                <form action="#" method="get">
-                                    <select name="select" id="sortBydate">
-                                        <option value="value">Date</option>
-                                        <option value="value">Newest</option>
-                                        <option value="value">Popular</option>
-                                    </select>
-                                </form>
-                            </div>
-                            <div class="view-product d-flex align-items-center">
-                                <p>View</p>
-                                <form action="#" method="get">
-                                    <select name="select" id="viewProduct">
-                                        <option value="value">12</option>
-                                        <option value="value">24</option>
-                                        <option value="value">48</option>
-                                        <option value="value">96</option>
-                                    </select>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="row">
-
-                <% @products.each do |product| %>
-                  <%= render 'product', product: product %>
-                <% end %>
-            </div>
-
-            <div class="row">
-                <div class="col-12">
-                    <!-- Pagination -->
-                    <nav aria-label="navigation" class="text-center">
-                        <ul class="pagination">
-                            <li class="page-item">
-                                <%= link_to products_path(page: @manager.products_previous_page_number), class: "page-link btn #{disabled_previous}" do %>
-                                    <i class="fa fa-angle-double-left"></i>
-                                <% end %>
-                            </li>
-                            
-                            <li class="page-item">
-                                <%= link_to products_path(page: @manager.products_next_page_number), class: "btn page-link #{disabled_next}" do %>
-                                    <i class="fa fa-angle-double-right"></i>
-                                <% end %>
-                            </li>
-                        </ul>
-                    </nav>
-                </div>
-            </div>
-        </div>
+          </ul>
+        </nav>
+      </div>
     </div>
+  </div>
 </div>
 <!-- ##### Main Content Wrapper End ##### -->

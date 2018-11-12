@@ -1,0 +1,43 @@
+<div class="row">
+  <div class="col-12">
+    <div class="product-topbar d-xl-flex align-items-end justify-content-between">
+
+      <!-- Total Products -->
+      <div class="total-products">
+        <p>Mostrando 1-<%= @products.count %> de <%= @manager.total_products %></p>
+      </div>
+
+      <% if params[:filter].present? %>
+        <div class="product-sorting d-flex">
+          <%= link_to t(:clean_filter), products_path(page: params[:page], per_page: params[:per_page]), class: 'btn btn-primary' %>
+        </div>
+      <% end -%>
+      <!-- Sorting -->
+      <div class="product-sorting d-flex">
+        <div class="sort-by-date d-flex align-items-center mr-15">
+          <p>Sort by</p>
+          <form action="#" method="get">
+            <select name="select" id="sortBydate">
+              <option value="value">Date</option>
+              <option value="value">Newest</option>
+              <option value="value">Popular</option>
+            </select>
+          </form>
+        </div>
+      
+        <div class="view-product d-flex align-items-center">
+          <p>View</p>
+          <form action="#" method="get">
+            <select name="select" id="viewProduct">
+              <option value="value">12</option>
+              <option value="value">24</option>
+              <option value="value">48</option>
+              <option value="value">96</option>
+            </select>
+          </form>
+        </div>
+      </div>
+    
+    </div>
+  </div>
+</div>
