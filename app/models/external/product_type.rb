@@ -18,7 +18,7 @@ class External::ProductType
 
     response = Net::HTTP.new(
       ENV['STOCK_API_HOST'],
-      ENV['STOCK_API_POST']
+      ENV['STOCK_API_PORT']
     ).request(request)
     results = JSON.parse(response.body).with_indifferent_access
 
