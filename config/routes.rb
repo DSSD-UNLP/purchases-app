@@ -1,11 +1,12 @@
 Rails.application.routes.draw do
+  root to: 'products#index'
+
   devise_for :users
 
   get :cart, controller: 'application'
 
-  root to: 'products#index'
-
-  resources :products, only: :index
-
-  post :coupon, to: 'coupons#validate', param: :name
+  resources :products, only: :index do
+    resources :coupons, only: :new
+    post :coupon, to: 'coupons#validate', param: :name
+  end
 end

@@ -1,0 +1,35 @@
+<div class="modal fade" id="coupon_modal_<%= product.id %>" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">¿ Deseas agregar un cupón ?</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+
+
+      <div class="modal-body">
+
+        <%= form_for(@coupon, url: product_coupon_path(product.id, @coupon), action: :validate, remote: true)do |form| %>
+          <%= form.label :name, 'Cupón' %>
+          <div class="form-group">
+            <div class="input-group">
+              <%= form.text_field :name, autofocus: true, class: 'form-control' %>
+            </div>
+          </div>
+
+
+
+      <!-- <div class="modal-footer"> -->
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">No, gracias</button>
+        <%= form.submit 'Validar coupón', class: 'btn btn-success' %>
+      <!-- </div> -->
+
+      <% end %>
+
+      </div>
+
+    </div>
+  </div>
+</div>

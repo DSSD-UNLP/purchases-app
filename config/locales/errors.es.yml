@@ -20,6 +20,8 @@ es:
         one: "Ha habido 1 error:"
         other: "Han habido %{count} errores:"
       invalid_email: 'Formato de email invalido'
+      invalid_coupon: 'El cupón no es válido'
+      model_invalid: 'Modelo inválido'
 
   activerecord:
     errors:

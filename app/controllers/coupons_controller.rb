@@ -1,13 +1,30 @@
 class CouponsController < ApplicationController
-  def validate
-    @coupon = External::Coupon.new(coupon_params)
+  before_action :set_product
 
-    @coupon.validate!
+  def new
+    @coupon   = External::Coupon.new
+  end
+
+  def validate
+    @coupon = External::Coupon.find(coupon_params[:name])
+
+    if @coupon.valid?
+      flash[:success] = t(:success)
+      respond_to do |format|
+        format.js do
+          redirect_to products_path
+        end
+      end
+    end
   end
 
   private
 
   def coupon_params
-    params.permit(:name)
+    params.require(:external_coupon).permit(:name)
+  end
+
+  def set_product
+    @product = External::Product.find(params[:product_id])
   end
 end

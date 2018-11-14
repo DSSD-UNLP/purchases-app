@@ -6,6 +6,7 @@ class ProductsController < ApplicationController
 
     @products = External::Product.all(parameters)
     @types    = External::ProductType.all(page_size: 10)
+    @coupon   = External::Coupon.new
   end
 
   private

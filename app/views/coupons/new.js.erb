@@ -1,0 +1,9 @@
+// $('coupon_modal_<%= @product.id %> .modal-dialog').attr('class', 'modal-dialog');
+// $('coupon_modal_<%= @product.id %> .modal-content').html('<%= j render 'modal', product: @product %>');
+$('#coupon_modal_<%= @product.id %>').appendTo("body")
+debugger
+$('#coupon_modal_<%= @product.id %>').modal('show');
+
+$(document).trigger('flash:send', <%= raw flash.to_hash.to_json %>);
+
+<% flash.clear %>

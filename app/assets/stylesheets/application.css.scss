@@ -1,27 +1,25 @@
- /*
-
- //= require_self
-
- */
   @import "variables";
+  @import "bootstrap";
+  @import "snackbar";
+  @import "snackbar-material";
+
   @import "theme_color";
   @import "responsive";
   @import "mixin";
   @import "style";
 
-  @import "css/snackbar";
   @import "css/animate.css";
-  @import "css/bootstrap.min";
   @import "css/classy-nav.min";
   @import "css/core-style";
   @import "css/font-awesome.min";
-  @import "css/jquery-ui.min";
   @import "css/magnific-popup";
   @import "css/nice-select";
 
+ /*
 
-  @import "snackbar";
-  @import "snackbar-material";
+ //= require_self
+
+ */
 
 .snackbar.error {
   background-color: red;
