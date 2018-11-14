@@ -9,7 +9,7 @@
     
         <% types.each do |type| %>
           <li>
-            <%= link_to type.name, products_path(page: params[:page], per_page: params[:per_page], filter: { type: type.id }) %>
+            <%= link_to type.name, products_path(filter: { type: type.id }) %>
           </li>
         <% end %>
 

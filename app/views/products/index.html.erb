@@ -10,7 +10,7 @@
   </div>
 </div>
 
-<%= render 'types', types: @types %>
+<%= render 'types', types: @types.results %>
 
 <div class="amado_product_area section-padding-100">
   <div class="container-fluid">
@@ -18,7 +18,7 @@
     <%= render 'filter' %>
 
     <div class="row">
-      <% @products.each do |product| %>
+      <% @products.results.each do |product| %>
         <%= render 'product', product: product %>
       <% end %>
     </div>
@@ -30,13 +30,13 @@
           <ul class="pagination">
 
             <li class="page-item">
-              <%= link_to products_path(page: products_previous_page_number, per_page: params[:per_page], filter: params.dig(:filter)), class: "page-link btn #{disabled_previous}" do %>
+              <%= link_to products_path(page: products_previous_page_number, page_size: params[:page_size], filter: params.dig(:filter)), class: "page-link btn #{disabled_previous}" do %>
                 <i class="fa fa-angle-double-left"></i>
               <% end %>
             </li>
             
             <li class="page-item">
-              <%= link_to products_path(page: products_next_page_number, per_page: params[:per_page], filter: params.dig(:filter)), class: "btn page-link #{disabled_next}" do %>
+              <%= link_to products_path(page: products_next_page_number, page_size: params[:page_size], filter: params.dig(:filter)), class: "btn page-link #{disabled_next}" do %>
                   <i class="fa fa-angle-double-right"></i>
               <% end %>
             </li>

@@ -2,18 +2,16 @@ class ProductsController < ApplicationController
   before_action :set_product, only: :show
 
   def index
-    parameters = index_params
-    parameters[:filter] = filter_params
+    parameters = index_params.merge(filter_params)
 
-    @manager  = External::ProductManager.new
-    @products = @manager.products(parameters)
-    @types    = @manager.list_types
+    @products = External::Product.all(parameters)
+    @types    = External::ProductType.all(page_size: 10)
   end
 
   private
 
   def index_params
-    params.permit(:page, :per_page)
+    params.permit(:page, :page_size)
   end
 
   def filter_params

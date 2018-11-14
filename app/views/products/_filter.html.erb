@@ -4,12 +4,12 @@
 
       <!-- Total Products -->
       <div class="total-products">
-        <p>Mostrando 1-<%= @products.count %> de <%= @manager.total_products %></p>
+        <p>Mostrando 1-<%= @products.results.count %> de <%= @products.count %></p>
       </div>
 
       <% if params[:filter].present? %>
         <div class="product-sorting d-flex">
-          <%= link_to t(:clean_filter), products_path(page: params[:page], per_page: params[:per_page]), class: 'btn btn-primary' %>
+          <%= link_to t(:clean_filter), products_path, class: 'btn btn-primary' %>
         </div>
       <% end -%>
       <!-- Sorting -->
