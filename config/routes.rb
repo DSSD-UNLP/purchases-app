@@ -7,5 +7,5 @@ Rails.application.routes.draw do
 
   resources :products, only: :index
 
-  post :coupon, to: 'coupons#validate'
+  post :coupon, to: 'coupons#validate', param: :name
 end

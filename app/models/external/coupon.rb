@@ -1,41 +1,12 @@
-class External::Coupon
-  include ActiveModel::Model
+class External::Coupon < Flexirest::Base
   extend ActiveModel::Naming
-  require 'net/http'
+  include ActiveModel::Validations
 
-  URL = '/coupons/'.freeze
-  attr_accessor :name
-  attr_reader   :errors
-
-  def initialize(params)
-    @errors = ActiveModel::Errors.new(self)
-
-    super(params)
+  validates_each :availability do |record, attr, value|
+    record.errors.add(attr, :invalid_coupon, message: 'El cupon no es válido') unless value
   end
 
-  def read_attribute_for_validation(attr)
-    send(attr)
-  end
+  base_url ENV['COUPON_API_URL']
 
-  def self.human_attribute_name(attr, options = {})
-    attr
-  end
-
-  def self.lookup_ancestors
-    [self]
-  end
-
-  def validate!
-    request  = Net::HTTP::Get.new(URL + "#{name}/")
-    response = Net::HTTP.new(
-      ENV['COUPON_API_HOST'],
-      ENV['COUPON_API_PORT']
-    ).request(request)
-
-    result = JSON.parse(response.body).with_indifferent_access
-
-    return if result[:availability]
-
-    errors.add(:name, :invalid_coupon, message: 'El cupon no es válido')
-  end
+  get :find, '/coupons/:id/'
 end
