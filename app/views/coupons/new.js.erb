@@ -5,6 +5,10 @@ $('#coupon_modal_<%= @product.id %>').on('hidden.bs.modal', function () {
   $('#coupon_modal_<%= @product.id %>').remove();
 })
 
+$("#new_external_coupon").submit(function () {
+  $('#coupon_modal_<%= @product.id %>').remove();
+});
+
 $(document).trigger('flash:send', <%= raw flash.to_hash.to_json %>);
 
 <% flash.clear %>
