@@ -1,8 +1,9 @@
-// $('coupon_modal_<%= @product.id %> .modal-dialog').attr('class', 'modal-dialog');
-// $('coupon_modal_<%= @product.id %> .modal-content').html('<%= j render 'modal', product: @product %>');
-$('#coupon_modal_<%= @product.id %>').appendTo("body")
-debugger
+$("body").append('<%= j render 'modal', product: @product %>');
 $('#coupon_modal_<%= @product.id %>').modal('show');
+
+$('#coupon_modal_<%= @product.id %>').on('hidden.bs.modal', function () {
+  $('#coupon_modal_<%= @product.id %>').remove();
+})
 
 $(document).trigger('flash:send', <%= raw flash.to_hash.to_json %>);
 

@@ -2,7 +2,7 @@ class CouponsController < ApplicationController
   before_action :set_product
 
   def new
-    @coupon   = External::Coupon.new
+    @coupon = External::Coupon.new
   end
 
   def validate
@@ -15,6 +15,9 @@ class CouponsController < ApplicationController
           redirect_to products_path
         end
       end
+    else
+      flash[:danger] = t(:error)
+      render :new
     end
   end
 
