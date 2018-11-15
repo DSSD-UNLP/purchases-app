@@ -12,11 +12,10 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require turbolinks
 //= require popper
 //= require bootstrap
-//= require rails-ujs
 //= require activestorage
-//= require turbolinks
 //= require snackbar
 
 $(document).on("turbolinks:load page:load", function(){
