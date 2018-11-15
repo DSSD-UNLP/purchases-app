@@ -1,19 +1,30 @@
-$("body").append('<%= j render 'modal', product: @product %>');
-$('#coupon_modal_<%= @product.id %>').modal('show');
+<% if user_signed_in? %>
+  $("body").append('<%= j render 'modal', product: @product %>');
+  $('#coupon_modal_<%= @product.id %>').modal('show');
 
-$('#coupon_modal_<%= @product.id %>').on('hidden.bs.modal', function () {
-  $('#coupon_modal_<%= @product.id %>').remove();
-  $(".modal-backdrop").remove();
-})
+  $('#coupon_modal_<%= @product.id %>').on('hidden.bs.modal', function () {
+    $('#coupon_modal_<%= @product.id %>').remove();
+    $(".modal-backdrop").remove();
+  })
 
-$("#new_external_coupon").submit(function () {
-  $('#coupon_modal_<%= @product.id %>').remove();
-  $(".modal-backdrop").remove();
-});
+  $("#new_external_coupon").submit(function () {
+    $('#coupon_modal_<%= @product.id %>').remove();
+    $(".modal-backdrop").remove();
+  });
 
-window.flashMessages = $.parseJSON('<%=j flash.to_hash.to_json.html_safe %>');
-$.each(flashMessages, function(key, value){
-  $.snackbar({content: value, style: key, timeout: 10000});
-});
+  window.flashMessages = $.parseJSON('<%=j flash.to_hash.to_json.html_safe %>');
+  $.each(flashMessages, function(key, value){
+    $.snackbar({content: value, style: key, timeout: 10000});
+  });
+
+  flash = $.parseJSON('<%=j flash.to_hash.to_json.html_safe %>');
+<% else %>
+  flash = {'alert': 'Debes iniciar sesión para realizar una compra'}
+<% end %>
+
+window.flashMessages = flash;
+  $.each(flashMessages, function(key, value){
+    $.snackbar({content: value, style: key, timeout: 10000});
+  });
 
 <% flash.clear %>
