@@ -17,7 +17,6 @@
 //= require rails-ujs
 //= require activestorage
 //= require turbolinks
-//= require_tree .
 //= require snackbar
 
 $(document).on("turbolinks:load page:load", function(){

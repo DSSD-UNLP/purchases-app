@@ -25,8 +25,11 @@
         <% end %>
 
         <div class="cart">
-            <!-- <button class="btn btn-success" data-toggle="modal" data-target="#coupon_modal_<%#= product.id %>" data-placement="left" title="Agregar al carrito">Comprar <i class="fa fa-shopping-cart"></i></button> -->
-            <%= link_to 'Prueba', new_product_coupon_path(product.id), remote: true, class: 'btn btn-success' %>
+          <%= link_to new_product_coupon_path(product.id), class: 'btn btn-success', data: { placement: "left", toggle: 'tooltip' }, remote: true do %>
+            <i class="fa fa-shopping-cart">
+              Comprar
+            </i>
+          <% end %>
         </div>
       </div>
     </div>

@@ -10,13 +10,11 @@ class CouponsController < ApplicationController
 
     if @coupon.valid?
       flash[:success] = t(:success)
-      respond_to do |format|
-        format.js do
-          redirect_to products_path
-        end
-      end
+
+      redirect_to products_path
     else
       flash[:danger] = t(:error)
+
       render :new
     end
   end
