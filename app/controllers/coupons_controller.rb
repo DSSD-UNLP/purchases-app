@@ -9,11 +9,11 @@ class CouponsController < ApplicationController
     @coupon = External::Coupon.find(coupon_params[:name])
 
     if @coupon.valid?
-      flash[:success] = t(:success)
+      flash[:notice] = 'El cupón ingresado es válido'
 
       redirect_to products_path
     else
-      flash[:danger] = t(:error)
+      flash[:alert] = 'El cupón ingresado no es válido'
 
       render :new
     end

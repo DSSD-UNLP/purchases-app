@@ -17,9 +17,10 @@
 //= require bootstrap
 //= require activestorage
 //= require snackbar
+//= require_self
 
 $(document).on("turbolinks:load page:load", function(){
   $.each(flashMessages, function(key, value){
     $.snackbar({content: value, style: key, timeout: 10000});
   });
-})
+});

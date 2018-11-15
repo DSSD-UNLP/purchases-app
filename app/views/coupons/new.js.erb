@@ -3,12 +3,17 @@ $('#coupon_modal_<%= @product.id %>').modal('show');
 
 $('#coupon_modal_<%= @product.id %>').on('hidden.bs.modal', function () {
   $('#coupon_modal_<%= @product.id %>').remove();
+  $(".modal-backdrop").remove();
 })
 
 $("#new_external_coupon").submit(function () {
   $('#coupon_modal_<%= @product.id %>').remove();
+  $(".modal-backdrop").remove();
 });
 
-$(document).trigger('flash:send', <%= raw flash.to_hash.to_json %>);
+window.flashMessages = $.parseJSON('<%=j flash.to_hash.to_json.html_safe %>');
+$.each(flashMessages, function(key, value){
+  $.snackbar({content: value, style: key, timeout: 10000});
+});
 
 <% flash.clear %>
