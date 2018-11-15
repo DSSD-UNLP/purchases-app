@@ -12,13 +12,12 @@
 //
 //= require jquery3
 //= require popper
-//= rrequire bootstrap
+//= require bootstrap
 //= require rails-ujs
-//= require snackbar
 //= require activestorage
 //= require turbolinks
-//= require_tree ../../../vendor/assets/javascripts/
 //= require_tree .
+//= require snackbar
 
 $(document).on("turbolinks:load page:load", function(){
   $.each(flashMessages, function(key, value){

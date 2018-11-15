@@ -79,6 +79,11 @@
         $(".cart-table table").niceScroll();
     }
 
+    // :: 8.0 wow Active Code
+    if ($window.width() > 767) {
+        new WOW().init();
+    }
+
     // :: 9.0 Tooltip Active Code
     if ($.fn.tooltip) {
         $('[data-toggle="tooltip"]').tooltip();
