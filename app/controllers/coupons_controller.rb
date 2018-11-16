@@ -11,7 +11,7 @@ class CouponsController < ApplicationController
     if @coupon.valid?
       flash[:notice] = 'El cupón ingresado es válido'
 
-      redirect_to products_path
+      redirect_to new_product_purchase_path(@product.id, params: @coupon)
     else
       flash[:alert] = 'El cupón ingresado no es válido'
 

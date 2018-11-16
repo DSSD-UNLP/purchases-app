@@ -8,5 +8,6 @@ Rails.application.routes.draw do
   resources :products, only: :index do
     resources :coupons, only: :new
     post :coupon, to: 'coupons#validate', param: :name
+    resources :purchases, only: [:create, :new]
   end
 end

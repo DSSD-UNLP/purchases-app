@@ -10,7 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_10_195919) do
+ActiveRecord::Schema.define(version: 2018_11_15_232327) do
+
+  create_table "purchases", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "product_id"
+    t.integer "coupon_id"
+    t.float "mount"
+    t.index ["user_id"], name: "index_purchases_on_user_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false

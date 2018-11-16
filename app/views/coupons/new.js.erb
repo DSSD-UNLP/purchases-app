@@ -12,14 +12,12 @@
     $(".modal-backdrop").remove();
   });
 
-  window.flashMessages = $.parseJSON('<%=j flash.to_hash.to_json.html_safe %>');
-  $.each(flashMessages, function(key, value){
-    $.snackbar({content: value, style: key, timeout: 10000});
-  });
-
   flash = $.parseJSON('<%=j flash.to_hash.to_json.html_safe %>');
+
 <% else %>
+
   flash = {'alert': 'Debes iniciar sesión para realizar una compra'}
+
 <% end %>
 
 window.flashMessages = flash;
