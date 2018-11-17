@@ -13,10 +13,15 @@ class CouponsController < ApplicationController
 
       redirect_to new_product_purchase_path(@product.id, params: @coupon)
     else
-      flash[:alert] = 'El cupón ingresado no es válido'
+      flash[:alert] = 'El cupón ingresado ya no es válido'
 
       render :new
     end
+  rescue Flexirest::HTTPNotFoundClientException
+    flash[:alert] = 'El cupón ingresado no existe'
+    @coupon       = External::Coupon.new
+
+    render :new
   end
 
   private

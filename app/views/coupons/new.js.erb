@@ -5,6 +5,7 @@
   $('#coupon_modal_<%= @product.id %>').on('hidden.bs.modal', function () {
     $('#coupon_modal_<%= @product.id %>').remove();
     $(".modal-backdrop").remove();
+    window.location = "<%= new_product_purchase_path(@product.id, params: @coupon) %>";
   })
 
   $("#new_external_coupon").submit(function () {
