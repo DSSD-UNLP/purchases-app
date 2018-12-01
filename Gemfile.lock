@@ -246,6 +246,7 @@ DEPENDENCIES
   chromedriver-helper
   coffee-rails (~> 4.2)
   devise
+  faraday
   figaro
   flexirest
   jbuilder (~> 2.5)

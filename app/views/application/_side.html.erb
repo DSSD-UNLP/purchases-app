@@ -31,8 +31,14 @@
       <% else %>
         <li style="display: inline" class="btn">
           <%= link_to t(:logout), destroy_user_session_path, method: :delete %>
-        </li>      
-      <% end %>      
+        </li>
+
+        <% if current_user.employee? %>
+          <li style="display: inline" class="btn">
+            <%= link_to t(:monitor), '#' %>
+          </li>
+        <% end %>    
+      <% end %>
     </ul>
   </nav>
 </header>

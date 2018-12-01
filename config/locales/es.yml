@@ -54,8 +54,7 @@ es:
   search: 'Buscar'
   searching: 'Buscando'
 
-  admin_resources: 'Librerías'
-  admin_products:  'Productos'
+  monitor: 'Monitorear'
 
   will_paginate:
     previous_label: '<<'
