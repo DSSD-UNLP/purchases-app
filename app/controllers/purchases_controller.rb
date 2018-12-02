@@ -1,19 +1,24 @@
 class PurchasesController < ApplicationController
+  PROCESS_DEFINITION_ID = ENV['PROCESS_DEFINITION_ID']
+
   before_action :set_product
   before_action :set_coupon
 
   def new
-    case_id = BonitaManager.new.start_case(start_case_params)
+    @manager = BonitaManager.new
+    @manager.start_case(start_case_params)
+    sleep 5.seconds
   end
 
   def create
+    @manager = BonitaManager.new(case_id: params[:case_id]).finish_case_successfully
   end
 
   private
 
   def start_case_params
     {
-      'processDefinitionId': '4751000970449300331',
+      'processDefinitionId': PROCESS_DEFINITION_ID,
       'variables': [
         {
           'name': 'nombrecupon',
