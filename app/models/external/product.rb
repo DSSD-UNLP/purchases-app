@@ -3,4 +3,8 @@ class External::Product < Flexirest::Base
 
   get :all, '/stock/products/'
   get :find, '/stock/product/:id/'
+
+  def type
+    External::ProductType.find(product_type)
+  end
 end

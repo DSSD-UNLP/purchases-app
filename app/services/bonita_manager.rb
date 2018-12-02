@@ -6,20 +6,6 @@ class BonitaManager
   BONITA_PASSWORD = 'bpm'.freeze
   BONITA_HOST_URL = ENV['BONITA_HOST_URL']
 
-  START_CASE_PARAMETERS = {
-    'processDefinitionId': '4751000970449300331',
-    'variables': [
-      {
-        'name': 'nombrecupon',
-        'value': 'VERANISIMO'
-      },
-      {
-        'name': 'email',
-        'value': 'nachogarciaaaa@gmail.com'
-      }
-    ]
-  }.freeze
-
   attr_reader :connection
 
   def initialize
@@ -34,14 +20,16 @@ class BonitaManager
     @cookies = initialize_cookies(HTTP::CookieJar.new) if @cookies.any?(&:expired?)
   end
 
-  def start_case
+  def start_case(body_params)
     response = connection.post('/bonita/API/bpm/case') do |request|
       request.headers['X-Bonita-API-Token'] = bonita_token
       request.headers['Content-Type']       = 'application/json'
-      request.headers['Cookie']             = parse_cookies
+      request.headers['Cookie']             = parsed_cookies
       request.headers['cache-control']      = 'no-cache'
-      request.body = START_CASE_PARAMETERS.to_json
+      request.body = body_params.to_json
     end
+
+    JSON.parse(response.body).symbolize_keys[:rootCaseId]
   end
 
   private
@@ -66,14 +54,12 @@ class BonitaManager
   end
 
   def bonita_token
-    bonita_token = @response_cookies.split(',').find do |elem|
-      elem.downcase.include? 'bonita-api-token'
-    end
-
-    bonita_token.split(';').first.strip.split('=').second
+    @cookies.find do |cookie|
+      cookie.name.underscore.to_sym == :x_bonita_api_token
+    end.value
   end
 
-  def parse_cookies
+  def parsed_cookies
     HTTP::Cookie.cookie_value(@cookies)
   end
 end
