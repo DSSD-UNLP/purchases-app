@@ -3,6 +3,8 @@ class PurchasesController < ApplicationController
   before_action :set_coupon
 
   def new
+    manager = BonitaManager.new
+    binding.pry
   end
 
   def create
