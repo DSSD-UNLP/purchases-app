@@ -12,6 +12,15 @@
           </span>
       </li>
 
+      <li>
+          <span>
+              Descuento:
+          </span>
+          <span>
+              <%= "$#{@manager.value('descuento')}" %>
+          </span>
+      </li>
+
       <% if @coupon.present? %>
           <li>
               <span>
@@ -36,7 +45,6 @@
 
     <div class="cart-btn mt-100">
       <%= link_to 'Comprar', product_purchases_path(@product.id, params: { case_id: @manager.case_id }), method: :post, class: 'btn amado-btn w-100' %>
-      <!-- <a href="cart.html" class="btn amado-btn w-100">Comprar</a> -->
     </div>
   </div>
 </div>
