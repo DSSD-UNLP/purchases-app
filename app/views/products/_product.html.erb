@@ -20,12 +20,17 @@
 
         <% if product.stock.to_i > 0 %>
           <div class="product-meta-data">
-              <p class="avaibility"><i class="fa fa-check-circle"></i>In Stock</p>
+              <p class="avaibility"><i class="fa fa-check-circle"></i> Con stock</p>
+          </div>
+        <% else %>
+          <div class="product-meta-data">
+              <p class="avaibility"><i class="fa fa-close"></i> Sin stock</p>
           </div>
         <% end %>
 
         <div class="cart">
-          <%= link_to new_product_coupon_path(product.id), class: 'btn btn-success', data: { placement: "left", toggle: 'tooltip' }, remote: true do %>
+          <% disabled_product = product.stock.to_i > 0 ? '' : 'disabled' %>
+          <%= link_to new_product_coupon_path(product.id), class: "btn btn-success #{disabled_product}", data: { placement: "left", toggle: 'tooltip' }, remote: true do %>
             <i class="fa fa-shopping-cart">
               Comprar
             </i>

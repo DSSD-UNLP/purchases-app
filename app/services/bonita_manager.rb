@@ -18,7 +18,7 @@ class BonitaManager
 
   attr_reader :connection, :case_id
 
-  def initialize(case_id: nil)
+  def initialize(case_id = nil)
     @connection = Faraday.new(url: BONITA_HOST_URL) do |conn|
       conn.response :logger
       conn.adapter Faraday.default_adapter
@@ -64,6 +64,13 @@ class BonitaManager
     task_id = task_id_for_case
     confirm_purchase
     resume_task(task_id)
+    Rails.cache.write("#{BONITA_HOST_URL}/last_case", nil, expires_in: 12.hours)
+  end
+
+  def finish_case_with_error
+    task_id = task_id_for_case
+    resume_task(task_id)
+    Rails.cache.write("#{BONITA_HOST_URL}/last_case", nil, expires_in: 12.hours)
   end
 
   private
@@ -77,7 +84,8 @@ class BonitaManager
   end
 
   def confirm_purchase
-    connection.get("/bonita/API/bpm/caseVariable/#{@case_id}/confirmacion") do |request|
+    connection.put("/bonita/API/bpm/caseVariable/#{@case_id}/confirmacion") do |request|
+      request.headers['Content-Type']       = 'application/json'
       request.headers['X-Bonita-API-Token'] = bonita_token
       request.headers['Cookie']             = parsed_cookies
       request.body = CONFIRMATION_HASH.to_json

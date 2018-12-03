@@ -11,7 +11,8 @@ class PurchasesController < ApplicationController
   end
 
   def create
-    @manager = BonitaManager.new(case_id: params[:case_id]).finish_case_successfully
+    @manager = BonitaManager.new(params[:case_id]).finish_case_successfully
+    redirect_to root_path, notice: 'Compra realizada con éxito'
   end
 
   private
