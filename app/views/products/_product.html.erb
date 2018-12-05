@@ -10,7 +10,13 @@
       <!-- Product Meta Data -->
       <div class="product-meta-data">
         <div class="line"></div>
-        <p class="product-price"><%= product.sale_price %></p>
+        <p class="product-price">
+          <% if current_user.present? && current_user.employee? %>
+            <%= product.cost_price %>
+          <% else %>
+            <%= product.sale_price %>
+          <% end %>
+        </p>
         <a href="product-details.html">
             <h6><%= product.name %></h6>
         </a>
@@ -30,10 +36,18 @@
 
         <div class="cart">
           <% disabled_product = product.stock.to_i > 0 ? '' : 'disabled' %>
-          <%= link_to new_product_coupon_path(product.id), class: "btn btn-success #{disabled_product}", data: { placement: "left", toggle: 'tooltip' }, remote: true do %>
-            <i class="fa fa-shopping-cart">
-              Comprar
-            </i>
+          <% if current_user.present? && current_user.employee? %>
+            <%= link_to new_product_purchase_path(product.id), class: "btn btn-success #{disabled_product}", data: { placement: "left", toggle: 'tooltip' } do %>
+              <i class="fa fa-shopping-cart">
+                Comprar
+              </i>
+            <% end %>
+          <% else %>
+            <%= link_to new_product_coupon_path(product.id), class: "btn btn-success #{disabled_product}", data: { placement: "left", toggle: 'tooltip' }, remote: true do %>
+              <i class="fa fa-shopping-cart">
+                Comprar
+              </i>
+            <% end %>
           <% end %>
         </div>
       </div>
