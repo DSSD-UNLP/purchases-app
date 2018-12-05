@@ -8,7 +8,8 @@ class User < ApplicationRecord
   validates_confirmation_of :password
 
   def employee?
-    External::Employee.find(email).present?
+    employee = External::Employee.find(email)
+    employee.present? && employee.status.downcase.to_sym != :error
   rescue Flexirest::HTTPNotFoundClientException
     false
   end
